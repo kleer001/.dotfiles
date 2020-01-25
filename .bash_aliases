@@ -26,9 +26,11 @@ alias cdai='cd ~/Dropbox/ai'
 #alias cn="scrot '%Y-%m-%d_%H:%M.jpg' -e 'mv \$f ~/Dropbox/ai/images/diary/'; echo `date '+%Y-%m-%d_%H:%M'` | xclip"
 
 function cn { 
-    DATESTAMP=$(date '+%Y-%m-%d_%H:%M')
-    scrot '$DATESTAMP.jpg' -e 'mv \$f ~/Dropbox/ai/images/diary/'
-    echo `date '$DATESTAMP'` | xclip
+    export DATESTAMP=$(date '+%Y-%m-%d_%H:%M')
+    scrot $DATESTAMP.jpg
+    mv  $DATESTAMP.jpg ~/Dropbox/ai/images/diary/
+    echo $DATESTAMP | xclip
+    echo $DATESTAMP
     }
 
 
