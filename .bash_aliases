@@ -34,7 +34,7 @@ function cn {
     }
 
 
-alias diary="abiword ~/Dropbox/ai/ai.rtf"
+alias diary='emacs ~/Dropbox/ai/diary.txt --eval "(goto-char (point-max))"'
 #quick and dirty way to edit if you want it 
 alias e="emacsclient --no-wait"
 
@@ -48,7 +48,7 @@ function getCurrentDate { export DATETODAY=(\"$(date '+%Y-%m-%d')\");}
 #count current words, open emacs, display word count change on emacs close
 function wxx { 
     export CC=($(countXX))
-    emacs
+    emacs ~/Dropbox/ai/emacs/org/XX\,\ a\ novel.org
     DD=($(countXX))
     let "LASTCOUNT=${DD[0]}-${CC[0]}"
     echo YOU WROTE 
@@ -61,6 +61,10 @@ function dbxx {
     getCurrentDate
     mysql --defaults-extra-file=~/wxxconfig.cnf -e "USE words; INSERT INTO writingXX(workday,countWords,totalWords) VALUES($DATETODAY,$LASTCOUNT,${DD[0]});";
     }
+
+# Hooo, it's pretty nice! Goes well with Tiled windows
+alias R='ranger'
+
 
 
 
